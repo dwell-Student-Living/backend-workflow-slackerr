@@ -1,0 +1,27 @@
+{
+  "name": "backend-workflow-slackerr",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dwell-Student-Living/backend-workflow-slackerr.git"
+  },
+  "keywords": [
+    "Error handler",
+    "Slack notifications"
+  ],
+  "author": {
+    "name": "Unblk",
+    "email": "herzon@unblk.io"
+  },
+  "bugs": {
+    "url": "https://github.com/dwell-Student-Living/backend-workflow-slackerr/issues"
+  },
+  "homepage": "https://github.com/dwell-Student-Living/backend-workflow-slackerr"
+}
