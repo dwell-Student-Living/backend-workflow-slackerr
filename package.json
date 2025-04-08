@@ -1,6 +1,7 @@
 {
   "name": "backend-workflow-slackerr",
   "module": "index.ts",
+  "version": "0.0.1",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
@@ -18,10 +19,13 @@
   ],
   "author": {
     "name": "Unblk",
-    "email": "herzon@unblk.io"
+    "email": "alexander@unblk.io"
   },
   "bugs": {
     "url": "https://github.com/dwell-Student-Living/backend-workflow-slackerr/issues"
   },
-  "homepage": "https://github.com/dwell-Student-Living/backend-workflow-slackerr"
+  "homepage": "https://github.com/dwell-Student-Living/backend-workflow-slackerr",
+  "publishConfig": {
+    "access": "public"
+  }
 }
