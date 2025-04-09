@@ -29,8 +29,7 @@ export default async function sendSlackError(err: Error): Promise<void> {
       fallback: err.message,
       title: 'Error details:',
       pretext: `NODE_ENV: ${NODE_ENV}`,
-      //   title_link:
-      //     'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups',
+    //   title_link:'https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups',
       text: err.stack !== undefined ? err.stack : err.message,
       color,
     };
@@ -49,10 +48,11 @@ export default async function sendSlackError(err: Error): Promise<void> {
 
 function makePostRequest(data: unknown) {
   return new Promise((resolve, reject) => {
-    const {SLACK_URL = 'CHANGE_ME'} = process.env;
-    if (SLACK_URL === 'CHANGE_ME') {
-      throw new Error('Please configure SLACK_URL env variable.');
+    const {SLACK_URL = 'CHANGE_ME', SLACK_TOKEN = 'abcd'} = process.env;
+    if (SLACK_URL === 'CHANGE_ME' || SLACK_TOKEN === 'abcd') {
+      throw new Error('Please configure SLACK_URL and SLACK_TOKEN env variables.');
     }
+
     const body = JSON.stringify(data);
     const {hostname, pathname} = new URL(SLACK_URL);
     const options: RequestOptions = {
@@ -61,7 +61,8 @@ function makePostRequest(data: unknown) {
       port: 443,
       method: 'POST',
       headers: {
-        'Content-Type': 'x-www-form-urlencoded',
+        'Authorization': `Bearer ${SLACK_TOKEN}`,
+        'Content-Type': 'application/json',
         'Content-Length': body.length,
       },
     };
